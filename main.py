@@ -5,6 +5,7 @@
 # Import modules to build report from excel-draft
 # import sys # not used at this point
 # import os # not used at this point
+import pandas as pd
 import time
 from reports import reportOutofstock, reportRare, reportStatusSold, reportTop3
 
@@ -15,8 +16,6 @@ def main():
             filepath = './Inventory_2024-10-01-12-00-00.csv' 
             print('Starting report...')
             time.sleep(2)
-            # Check draft for items that are out of stock and put them in a list
-            import pandas as pd
             # Read excel file
             draft = pd.read_csv(filepath)
             # set DataFrame for draft to call and use excel cells/items to process with pandas
@@ -38,6 +37,7 @@ def main():
             # Module - List items out of stock.
             time.sleep(2)
             reportOutofstock(df)
+            break
             # Module - List Flopsellers. T.B.C.
     # handling KeyboardInterrupt 
     except KeyboardInterrupt:
